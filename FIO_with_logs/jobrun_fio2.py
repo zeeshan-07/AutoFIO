@@ -10,21 +10,29 @@ import pdb
 import pprint
 
 
-ips = ['''100.67.153.70''','''100.67.153.71''','''100.67.153.80''','''100.67.153.90''','''100.67.153.73''','''100.67.153.84''','''100.67.153.72''','''100.67.153.78''','''100.67.153.75''','''100.67.153.74''','''100.67.153.76''','''100.67.153.79''','''100.67.153.85''','''100.67.153.81''','''100.67.153.87''','''100.67.153.92''','''100.67.153.86''','''100.67.153.89''','''100.67.153.91''','''100.67.153.94''','''100.67.153.95''','''100.67.153.96''','''100.67.153.98''','''100.67.153.99''','''100.67.153.97''','''100.67.153.100''','''100.67.153.93''','''100.67.153.77''','''100.67.153.68''','''100.67.153.67''']
+ips = ['''100.67.62.90''','''100.67.62.91''','''100.67.62.92''']
 
 """ips = ['''100.67.153.97''']"""
 
 user = '''centos'''
 pwd = None
-key_path = '''/home/osp_admin/ceph-key.pem'''
+key_path = '''/home/osp_admin/ssh-key.pem'''
 results = {}
 fio_cmd = '''sudo fio /home/centos/Data/jobfile.fio'''
 
+resultdir= sys.argv[1]
+jobdir= sys.argv[2]
+
+
+os.mkdir(resultdir)
 
 cwd = os.getcwd()
-cwd_results = cwd + '''/fio_results/'''
-jobfile_path = cwd + '''/jobfile.fio'''
+cwd_results = cwd + '''/''' + resultdir + '''/'''
+jobfile_path = cwd +'''/''' + jobdir
 
+#os.mkdir(cwd_results)
+print cwd_results
+print jobfile_path
 
 def run_fio_on_vm(ip, num):
     global user, pwd, key_path, fio_cmd, results, cwd_results, jobfile_path
